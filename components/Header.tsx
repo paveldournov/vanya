@@ -12,6 +12,29 @@ const Header: React.FC = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+  
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const href = e.currentTarget.getAttribute('href');
+
+    if (!href || href === '#') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        setIsMenuOpen(false);
+        return;
+    }
+    
+    const targetId = href.substring(1);
+    const targetElement = document.getElementById(targetId);
+
+    if (targetElement) {
+        // The timeout is a workaround to ensure the menu closes before scrolling starts,
+        // preventing visual glitches on some mobile browsers.
+        setTimeout(() => {
+            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 0);
+    }
+    setIsMenuOpen(false); // Close mobile menu if open
+  };
 
   const navLinks = [
     { href: '#about-play', text: 'О пьесе' },
@@ -26,7 +49,7 @@ const Header: React.FC = () => {
     <header className={`fixed w-full top-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-gray-900/90 backdrop-blur-sm shadow-lg' : 'bg-transparent'}`}>
       <nav className="container mx-auto px-6 py-3">
         <div className="flex justify-between items-center">
-          <a href="#" className="text-2xl font-serif font-bold text-white">Театр<span className="text-amber-400">33</span></a>
+          <a href="#" onClick={handleLinkClick} className="text-2xl font-serif font-bold text-white">Театр<span className="text-amber-400">33</span></a>
           
           <div className="md:hidden">
             <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-gray-300 hover:text-white focus:outline-none">
@@ -38,9 +61,9 @@ const Header: React.FC = () => {
 
           <div className="hidden md:flex items-center space-x-8">
             {navLinks.map(link => (
-              <a key={link.href} href={link.href} className={linkClasses.replace('block py-2 px-3', '')}>{link.text}</a>
+              <a key={link.href} href={link.href} onClick={handleLinkClick} className={linkClasses.replace('block py-2 px-3', '')}>{link.text}</a>
             ))}
-            <a href="#tickets" className="bg-amber-500 hover:bg-amber-600 text-gray-900 font-bold py-2 px-4 rounded-md transition-transform duration-300 hover:scale-105">
+            <a href="#tickets" onClick={handleLinkClick} className="bg-amber-500 hover:bg-amber-600 text-gray-900 font-bold py-2 px-4 rounded-md transition-transform duration-300 hover:scale-105">
               Купить билеты
             </a>
           </div>
@@ -50,10 +73,10 @@ const Header: React.FC = () => {
           <div className="md:hidden mt-4 bg-gray-800 rounded-lg">
             <ul className="flex flex-col p-4 space-y-2">
               {navLinks.map(link => (
-                <li key={link.href}><a href={link.href} onClick={() => setIsMenuOpen(false)} className={linkClasses}>{link.text}</a></li>
+                <li key={link.href}><a href={link.href} onClick={handleLinkClick} className={linkClasses}>{link.text}</a></li>
               ))}
               <li>
-                <a href="#tickets" onClick={() => setIsMenuOpen(false)} className="block w-full text-center bg-amber-500 hover:bg-amber-600 text-gray-900 font-bold py-2 px-4 rounded-md mt-2">
+                <a href="#tickets" onClick={handleLinkClick} className="block w-full text-center bg-amber-500 hover:bg-amber-600 text-gray-900 font-bold py-2 px-4 rounded-md mt-2">
                   Купить билеты
                 </a>
               </li>

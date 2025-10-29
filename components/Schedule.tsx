@@ -1,14 +1,15 @@
-
 import React from 'react';
 import { Performance } from '../types';
 
 const scheduleData: Performance[] = [
-  { date: '25 октября', day: 'Пятница', time: '19:30', url: 'https://www.theatre33wa.org/productions/uncle-vanya' },
-  { date: '26 октября', day: 'Суббота', time: '19:30', url: 'https://www.theatre33wa.org/productions/uncle-vanya' },
-  { date: '27 октября', day: 'Воскресенье', time: '18:00', url: 'https://www.theatre33wa.org/productions/uncle-vanya' },
-  { date: '1 ноября', day: 'Пятница', time: '19:30', url: 'https://www.theatre33wa.org/productions/uncle-vanya' },
-  { date: '2 ноября', day: 'Суббота', time: '19:30', url: 'https://www.theatre33wa.org/productions/uncle-vanya' },
-  { date: '3 ноября', day: 'Воскресенье', time: '18:00', url: 'https://www.theatre33wa.org/productions/uncle-vanya' },
+  { date: '8 ноября', day: 'Суббота', time: '19:00', url: 'https://theatre33.ludus.com/index.php?show_id=200496164' },
+  { date: '9 ноября', day: 'Воскресенье', time: '17:00', url: 'https://theatre33.ludus.com/index.php?show_id=200496164' },
+  { date: '14 ноября', day: 'Пятница', time: '19:00', url: 'https://theatre33.ludus.com/index.php?show_id=200496164' },
+  { date: '15 ноября', day: 'Суббота', time: '19:00', url: 'https://theatre33.ludus.com/index.php?show_id=200496164' },
+  { date: '16 ноября', day: 'Воскресенье', time: '17:00', url: 'https://theatre33.ludus.com/index.php?show_id=200496164' },
+  { date: '21 ноября', day: 'Пятница', time: '19:00', url: 'https://theatre33.ludus.com/index.php?show_id=200496164' },
+  { date: '22 ноября', day: 'Суббота', time: '19:00', url: 'https://theatre33.ludus.com/index.php?show_id=200496164' },
+  { date: '23 ноября', day: 'Воскресенье', time: '17:00', url: 'https://theatre33.ludus.com/index.php?show_id=200496164' },
 ];
 
 const Schedule: React.FC<{ id: string }> = ({ id }) => {

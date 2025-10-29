@@ -1,14 +1,15 @@
-
 import React from 'react';
 import { Actor } from '../types';
 
 const castData: Actor[] = [
-  { name: 'Иван Войницкий', role: 'Дядя Ваня', imageUrl: 'https://picsum.photos/400/500?grayscale&random=1' },
-  { name: 'Александр Серебряков', role: 'Профессор', imageUrl: 'https://picsum.photos/400/500?grayscale&random=2' },
-  { name: 'Елена Андреевна', role: 'Его жена', imageUrl: 'https://picsum.photos/400/500?grayscale&random=3' },
-  { name: 'Софья Александровна', role: 'Соня', imageUrl: 'https://picsum.photos/400/500?grayscale&random=4' },
-  { name: 'Михаил Астров', role: 'Врач', imageUrl: 'https://picsum.photos/400/500?grayscale&random=5' },
-  { name: 'Мария Войницкая', role: 'Мать дяди Вани', imageUrl: 'https://picsum.photos/400/500?grayscale&random=6' },
+  { name: 'Павел Дурнов', role: 'Профессор Серебряков', imageUrl: 'https://picsum.photos/400/500?grayscale&random=1' },
+  { name: 'Екатерина Власова', role: 'Елена Андреевна', imageUrl: 'https://picsum.photos/400/500?grayscale&random=2' },
+  { name: 'Ольга Семенова', role: 'Софья Александровна (Соня)', imageUrl: 'https://picsum.photos/400/500?grayscale&random=3' },
+  { name: 'Инна Игнатьева', role: 'Войницкая Мария Васильевна', imageUrl: 'https://picsum.photos/400/500?grayscale&random=4' },
+  { name: 'Сергей Савчук', role: 'Иван Войницкий (Дядя Ваня)', imageUrl: 'https://picsum.photos/400/500?grayscale&random=5' },
+  { name: 'Макс Короткий', role: 'Михаил Астров', imageUrl: 'https://picsum.photos/400/500?grayscale&random=6' },
+  { name: 'Евгений Яковенко', role: 'Илья Телегин', imageUrl: 'https://picsum.photos/400/500?grayscale&random=7' },
+  { name: 'Ирина Богданова', role: 'Марина, старая няня', imageUrl: 'https://picsum.photos/400/500?grayscale&random=8' },
 ];
 
 const CastCard: React.FC<{ actor: Actor }> = ({ actor }) => (
@@ -26,7 +27,7 @@ const Cast: React.FC<{ id: string }> = ({ id }) => {
   return (
     <section id={id} className="scroll-mt-20">
       <h2 className="text-3xl md:text-4xl font-serif font-bold mb-8 text-center text-amber-300">Актеры и создатели</h2>
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
         {castData.map((actor) => (
           <CastCard key={actor.name} actor={actor} />
         ))}
